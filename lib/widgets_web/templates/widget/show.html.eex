@@ -1,0 +1,25 @@
+<h1>Show Widget Order</h1>
+<ul>
+  <li>
+    <strong>Order ID:</strong>
+    <%= @widget.id %>
+  </li>
+  <li>
+    <strong>Quantity:</strong>
+    <%= @widget.quantity %>
+  </li>
+  <li>
+    <strong>Color:</strong>
+    <%= @widget.color %>
+  </li>
+  <li>
+    <strong>Date:</strong>
+    <%= @widget.date %>
+  </li>
+  <li>
+    <strong>Type:</strong>
+    <%= @widget.type %>
+  </li>
+</ul>
+<span><%= link "Edit", to: Routes.widget_path(@conn, :edit, @widget) %></span>
+<span><%= link "Back", to: Routes.widget_path(@conn, :index) %></span>

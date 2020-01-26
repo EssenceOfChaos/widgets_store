@@ -1,0 +1,32 @@
+<h1>Listing Widgets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Quantity</th>
+      <th>Color</th>
+      <th>Date</th>
+      <th>Type</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for widget <- @widgets do %>
+    <tr>
+      <td><%= widget.quantity %></td>
+      <td><%= widget.color %></td>
+      <td><%= widget.date %></td>
+      <td><%= widget.type %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.widget_path(@conn, :show, widget) %></span>
+        <span><%= link "Edit", to: Routes.widget_path(@conn, :edit, widget) %></span>
+        <span><%= link "Delete", to: Routes.widget_path(@conn, :delete, widget), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Widget", to: Routes.widget_path(@conn, :new) %></span>

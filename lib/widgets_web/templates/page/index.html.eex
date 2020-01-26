@@ -1,0 +1,35 @@
+<section class="phx-hero">
+  <h1><%= gettext "Welcome to %{name}!", name: "The Widget Company" %></h1>
+  <p>We offer the largest selection <br/>
+    of customizable widgets.</p>
+</section>
+<section class="row">
+  <article class="column">
+    <h2>Sales</h2>
+    <ul>
+      <li>
+        <span><%= link "Order Widget", to: Routes.widget_path(@conn, :new) %></span>
+      </li>
+      <li>
+        <a href="https://github.com/phoenixframework/phoenix">Source</a>
+      </li>
+      <li>
+        <a href="https://github.com/phoenixframework/phoenix/blob/v1.4/CHANGELOG.md">v1.4 Changelog</a>
+      </li>
+    </ul>
+  </article>
+  <article class="column">
+    <h2>Help</h2>
+    <ul>
+      <li>
+        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
+      </li>
+      <li>
+        <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
+      </li>
+      <li>
+        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
+      </li>
+    </ul>
+  </article>
+</section>
