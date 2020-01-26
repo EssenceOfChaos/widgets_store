@@ -1,6 +1,6 @@
 # Widgets
 
-To run this application you will need to have [Elixir](https://elixir-lang.org/install.html){target="\_blank"} and [Phoenix](https://hexdocs.pm/phoenix/installation.html){target="\_blank"} installed on your machine.
+To run this application you will need to have [Elixir](https://elixir-lang.org/install.html) and [Phoenix](https://hexdocs.pm/phoenix/installation.html) installed on your machine.
 
 To start your Phoenix server:
 
