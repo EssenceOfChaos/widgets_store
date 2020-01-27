@@ -1,6 +1,6 @@
 # Widgets
 
-To run this application you will need to have [Elixir](https://elixir-lang.org/install.html) and [Phoenix](https://hexdocs.pm/phoenix/installation.html) installed on your machine.
+To run this application you will need to have [Elixir](https://elixir-lang.org/install.html) and [Phoenix](https://hexdocs.pm/phoenix/installation.html) installed on your machine. Also, Postgres running on localhost on the default port.
 
 To start your Phoenix server:
 
