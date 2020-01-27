@@ -666,9 +666,11 @@ header nav a {
 .quantity_input {
   max-width: 100px;
 }
-.email_input {
+.email_input,
+.status_input {
   max-width: 250px;
 }
+
 .order_form {
   max-width: 600px;
 }

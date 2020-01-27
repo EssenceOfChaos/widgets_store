@@ -1,0 +1,43 @@
+<%= form_for @changeset, @action, [class: "order_form", name: "order_form"], fn f -> %>
+<%= if @changeset.action do %>
+  <div class="alert alert-danger">
+    <p>Oops, something went wrong! Please check the errors below.</p>
+  </div>
+<% end %>
+<!-- Quantity Input -->
+<%= label f, :quantity %>
+<%= number_input f, :quantity, class: "quantity_input" %>
+<%= error_tag f, :quantity %>
+<!-- Color Input -->
+<%= label f, :color %>
+<%= select(f, :color, [
+      "Blue": "BLUE",
+      "Red": "RED",
+      "Yellow": "YELLOW"
+    ], id: "color") %>
+<%= error_tag f, :color %>
+<!-- Date Input -->
+<%= label f, :date %>
+<%= date_select f, :date, default: today() %>
+<%= error_tag f, :date %>
+<!-- Type Input -->
+<%= label f, :type %>
+<%= select(f, :type, [
+      "Widget": "WIDGET",
+      "Widget Pro": "WIDGET_PRO",
+      "Widget Xtreme": "WIDGET_XTREME"
+    ], id: "type") %>
+<%= error_tag f, :type %>
+<!-- Email Input -->
+<%= label f, :email %>
+<%= email_input f, :email, class: "email_input" %>
+<%= error_tag f, :email %>
+<!-- Status Input -->
+<%= label f, :status %>
+<%= text_input f, :status, class: "status_input" %>
+<%= error_tag f, :status %>
+<div>
+  <br />
+  <%= submit "Save Changes" %>
+</div>
+<% end %>
