@@ -1,4 +1,7 @@
 defmodule Widgets.OrdersTest do
+  @moduledoc """
+  Testing the Orders context
+  """
   use Widgets.DataCase
 
   alias Widgets.Orders
@@ -6,9 +9,49 @@ defmodule Widgets.OrdersTest do
   describe "widgets" do
     alias Widgets.Orders.Widget
 
-    @valid_attrs %{color: "some color", date: ~N[2010-04-17 14:00:00], quantity: 42, type: "some type"}
-    @update_attrs %{color: "some updated color", date: ~N[2011-05-18 15:01:01], quantity: 43, type: "some updated type"}
-    @invalid_attrs %{color: nil, date: nil, quantity: nil, type: nil}
+    @valid_attrs %{
+      color: "RED",
+      date: ~D[2021-12-25],
+      quantity: 4,
+      type: "WIDGET",
+      status: "PENDING",
+      email: "someguy@aol.com"
+    }
+
+    @update_attrs %{
+      color: "BLUE",
+      date: ~D[2021-12-26],
+      quantity: 2,
+      type: "WIDGET_XTREME",
+      status: "FULFILLED",
+      email: "someguy2@aol.com"
+    }
+
+    @invalid_attrs %{color: nil, date: nil, quantity: nil, type: nil, email: nil}
+
+    @invalid_color %{
+      color: "BROWN",
+      date: ~D[2021-12-25],
+      quantity: 4,
+      type: "WIDGET",
+      status: "PENDING"
+    }
+
+    @invalid_type %{
+      color: "YELLOW",
+      date: ~D[2021-12-25],
+      quantity: 4,
+      type: "SUPER",
+      status: "PENDING"
+    }
+
+    @invalid_date %{
+      color: "BLUE",
+      date: Date.utc_today(),
+      quantity: 1,
+      type: "WIDGET_PRO",
+      status: "PENDING"
+    }
 
     def widget_fixture(attrs \\ %{}) do
       {:ok, widget} =
@@ -29,12 +72,35 @@ defmodule Widgets.OrdersTest do
       assert Orders.get_widget!(widget.id) == widget
     end
 
+    # Attempt to create a widget of color "BROWN"
+    test "create_widget/1 with invalid color returns correct error message" do
+      assert {:error, changeset} = Orders.create_widget(@invalid_color)
+      assert changeset.errors[:color] == {"Widgets can only be ordered in primary colors.", []}
+    end
+
+    # Attempt to create a widget of type "SUPER"
+    test "create_widget/1 with invalid type returns correct error message" do
+      assert {:error, changeset} = Orders.create_widget(@invalid_type)
+
+      assert changeset.errors[:type] ==
+               {"Available widget types include Widget, Widget Pro, and Widget Xtreme.", []}
+    end
+
+    # Attempt to create a widget using todays date
+    test "create_widget/1 with invalid date returns correct error message" do
+      assert {:error, changeset} = Orders.create_widget(@invalid_date)
+
+      assert changeset.errors[:date] ==
+               {"Widget orders must be placed at least one week in advance.", []}
+    end
+
     test "create_widget/1 with valid data creates a widget" do
       assert {:ok, %Widget{} = widget} = Orders.create_widget(@valid_attrs)
-      assert widget.color == "some color"
-      assert widget.date == ~N[2010-04-17 14:00:00]
-      assert widget.quantity == 42
-      assert widget.type == "some type"
+      assert widget.color == "RED"
+      assert widget.date == ~D[2021-12-25]
+      assert widget.quantity == 4
+      assert widget.type == "WIDGET"
+      assert widget.status == "PENDING"
     end
 
     test "create_widget/1 with invalid data returns error changeset" do
@@ -44,10 +110,10 @@ defmodule Widgets.OrdersTest do
     test "update_widget/2 with valid data updates the widget" do
       widget = widget_fixture()
       assert {:ok, %Widget{} = widget} = Orders.update_widget(widget, @update_attrs)
-      assert widget.color == "some updated color"
-      assert widget.date == ~N[2011-05-18 15:01:01]
-      assert widget.quantity == 43
-      assert widget.type == "some updated type"
+      assert widget.color == "BLUE"
+      assert widget.date == ~D[2021-12-26]
+      assert widget.quantity == 2
+      assert widget.type == "WIDGET_XTREME"
     end
 
     test "update_widget/2 with invalid data returns error changeset" do

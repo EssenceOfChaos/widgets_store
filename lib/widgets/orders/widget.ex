@@ -13,7 +13,8 @@ defmodule Widgets.Orders.Widget do
     field :date, :date
     field :quantity, :integer
     field :type, :string
-    field :status, :string
+    field :status, :string, default: "PENDING"
+    field :email, :string
 
     timestamps()
   end
@@ -23,7 +24,7 @@ defmodule Widgets.Orders.Widget do
   """
   def changeset(widget, attrs) do
     widget
-    |> cast(attrs, [:quantity, :color, :date, :type, :status])
+    |> cast(attrs, [:quantity, :color, :date, :type, :status, :email])
     |> validate_required([:quantity, :color, :date, :type])
     |> validate_number(:quantity, greater_than_or_equal_to: 1)
     |> validate_color(:color)

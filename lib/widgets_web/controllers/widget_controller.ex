@@ -3,6 +3,8 @@ defmodule WidgetsWeb.WidgetController do
 
   alias Widgets.Orders
   alias Widgets.Orders.Widget
+  alias Widgets.Mailer
+  require Logger
 
   def index(conn, _params) do
     widgets = Orders.list_widgets()
@@ -17,8 +19,10 @@ defmodule WidgetsWeb.WidgetController do
   def create(conn, %{"widget" => widget_params}) do
     case Orders.create_widget(widget_params) do
       {:ok, widget} ->
+        # Mailer.send_order_confirmation(widget.email, widget.id)
+
         conn
-        |> put_flash(:info, "Order successful!")
+        |> put_flash(:info, "Widget order with ID:#{widget.id} placed successfully!")
         |> redirect(to: Routes.widget_path(conn, :show, widget))
 
       {:error, %Ecto.Changeset{} = changeset} ->
@@ -26,6 +30,7 @@ defmodule WidgetsWeb.WidgetController do
     end
   end
 
+  @spec show(Plug.Conn.t(), map) :: Plug.Conn.t()
   def show(conn, %{"id" => id}) do
     widget = Orders.get_widget!(id)
     render(conn, "show.html", widget: widget)

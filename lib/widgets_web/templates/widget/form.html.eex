@@ -13,8 +13,7 @@
 <%= select(f, :color, [
       "Blue": "BLUE",
       "Red": "RED",
-      "Yellow": "YELLOW",
-      "Brown": "BROWN"
+      "Yellow": "YELLOW"
     ], id: "color") %>
 <%= error_tag f, :color %>
 <!-- Date Input -->
@@ -26,10 +25,13 @@
 <%= select(f, :type, [
       "Widget": "WIDGET",
       "Widget Pro": "WIDGET_PRO",
-      "Widget Xtreme": "WIDGET_XTREME",
-      "little widget": "lil_widget"
+      "Widget Xtreme": "WIDGET_XTREME"
     ], id: "type") %>
 <%= error_tag f, :type %>
+<!-- Email Input -->
+<%= label f, :email %>
+<%= email_input f, :email, class: "email_input" %>
+<%= error_tag f, :email %>
 <div>
   <br />
   <%= submit "Order" %>

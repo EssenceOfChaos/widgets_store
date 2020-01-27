@@ -10,3 +10,16 @@ To start your Phoenix server:
 - Start Phoenix endpoint with `mix phx.server`
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+
+## Result of sending test email
+
+\$ `more /tmp/mailgun.json`
+
+```json
+{
+  "to": "fjschiller@gmail.com",
+  "subject": "Confirming your order number 7",
+  "html": "<div class=\"jumbotron\">\n  <h2>Your order has been confirmed!</h2>\n  <p> Your order number is 7</p>\n  <span><a href=\"/widgets/7\">View Order</a></span>\n</div>\n",
+  "from": "us@example.com"
+}
+```

@@ -1,0 +1,5 @@
+<div class="jumbotron">
+  <h2>Your order has been confirmed!</h2>
+  <p> Your order number is <%= @widget_id %></p>
+  <span><%= link "View Order", to: Routes.widget_path(WidgetsWeb.Endpoint, :show, @widget_id) %></span>
+</div>

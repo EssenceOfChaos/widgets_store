@@ -18,6 +18,7 @@ defmodule WidgetsWeb.Router do
 
     get "/", PageController, :index
     resources "/widgets", WidgetController
+
   end
 
   # Other scopes may use custom stacks.

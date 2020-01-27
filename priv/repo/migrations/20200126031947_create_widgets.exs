@@ -8,7 +8,7 @@ defmodule Widgets.Repo.Migrations.CreateWidgets do
       add :date, :date
       add :type, :string
       add :status, :string, default: "Pending"
-
+      add :email, :string
       timestamps()
     end
   end
