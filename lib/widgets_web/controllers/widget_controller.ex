@@ -17,8 +17,11 @@ defmodule WidgetsWeb.WidgetController do
   def create(conn, %{"widget" => widget_params}) do
     case Orders.create_widget(widget_params) do
       {:ok, widget} ->
-        Email.confirmation_email(widget.email, widget.id)
-        |> Mailer.deliver_now()
+
+        if widget.email != nil do
+          Email.confirmation_email(widget.email, widget.id)
+          |> Mailer.deliver_now()
+        end
 
         conn
         |> put_flash(:info, "Widget order with ID:#{widget.id} placed successfully!")

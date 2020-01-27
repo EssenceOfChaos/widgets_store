@@ -25,5 +25,3 @@
     <%= @widget.status %>
   </li>
 </ul>
-<span><%= link "Edit", to: Routes.widget_path(@conn, :edit, @widget), class: "button button-outline" %></span>
-<span><%= link "View All Orders", to: Routes.widget_path(@conn, :index), class: "button" %></span>
