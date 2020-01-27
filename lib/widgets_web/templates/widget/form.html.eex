@@ -14,6 +14,7 @@
       "Blue": "BLUE",
       "Red": "RED",
       "Yellow": "YELLOW",
+      "Brown": "BROWN"
     ], id: "color") %>
 <%= error_tag f, :color %>
 <!-- Date Input -->
@@ -25,7 +26,8 @@
 <%= select(f, :type, [
       "Widget": "WIDGET",
       "Widget Pro": "WIDGET_PRO",
-      "Widget Xtreme": "WIDGET_EXTREME",
+      "Widget Xtreme": "WIDGET_XTREME",
+      "little widget": "lil_widget"
     ], id: "type") %>
 <%= error_tag f, :type %>
 <div>

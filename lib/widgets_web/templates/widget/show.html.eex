@@ -20,6 +20,10 @@
     <strong>Type:</strong>
     <%= @widget.type %>
   </li>
+  <li>
+    <strong>Order Status:</strong>
+    <%= @widget.status %>
+  </li>
 </ul>
 <span><%= link "Edit", to: Routes.widget_path(@conn, :edit, @widget) %></span>
 <span><%= link "Back", to: Routes.widget_path(@conn, :index) %></span>
