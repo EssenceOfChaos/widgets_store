@@ -9,6 +9,8 @@ To start your Phoenix server:
 - Install Node.js dependencies with `cd assets && npm install`
 - Start Phoenix endpoint with `mix phx.server`
 
+To run the test suite run `mix test`. If everything is installled properly the result should be `23 tests, 0 failures`.
+
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
 ## Result of sending email
