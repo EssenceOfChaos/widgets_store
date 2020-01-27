@@ -11,15 +11,10 @@ To start your Phoenix server:
 
 Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-## Result of sending test email
+## Result of sending email
 
-\$ `more /tmp/mailgun.json`
+[debug] Sending email with Bamboo.MailgunAdapter:
 
 ```json
-{
-  "to": "fjschiller@gmail.com",
-  "subject": "Confirming your order number 7",
-  "html": "<div class=\"jumbotron\">\n  <h2>Your order has been confirmed!</h2>\n  <p> Your order number is 7</p>\n  <span><a href=\"/widgets/7\">View Order</a></span>\n</div>\n",
-  "from": "us@example.com"
-}
+%Bamboo.Email{assigns: %{}, attachments: [], bcc: [], cc: [], from: {nil, "us@example.com"}, headers: %{}, html_body: "<div class=\"jumbotron\">\n  <h2>Your order has been confirmed!</h2>\n  <p> Your order number is 4</p>\n  <span><a href=\"/widgets/4\">View Order</a></span>\n</div>\n", private: %{}, subject: "Order Confirmation", text_body: "Thanks for ordering!", to: [nil: "fjschiller@gmail.com"]}
 ```

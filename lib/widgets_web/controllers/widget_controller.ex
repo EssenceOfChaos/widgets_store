@@ -1,10 +1,8 @@
 defmodule WidgetsWeb.WidgetController do
   use WidgetsWeb, :controller
 
-  alias Widgets.Orders
+  alias Widgets.{Orders, Mailer, Email}
   alias Widgets.Orders.Widget
-  alias Widgets.Mailer
-  require Logger
 
   def index(conn, _params) do
     widgets = Orders.list_widgets()
@@ -19,7 +17,8 @@ defmodule WidgetsWeb.WidgetController do
   def create(conn, %{"widget" => widget_params}) do
     case Orders.create_widget(widget_params) do
       {:ok, widget} ->
-        # Mailer.send_order_confirmation(widget.email, widget.id)
+        Email.confirmation_email(widget.email, widget.id)
+        |> Mailer.deliver_now()
 
         conn
         |> put_flash(:info, "Widget order with ID:#{widget.id} placed successfully!")

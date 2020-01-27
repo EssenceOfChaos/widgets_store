@@ -22,10 +22,11 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:request_id]
 
-# Configure Mailgun Settings
-config :widgets,
-  mailgun_domain: System.get_env("MAILGUN_DOMAIN"),
-  mailgun_key: System.get_env("MAILGUN_API")
+# Configure Bamboo Settings
+config :widgets, Widgets.Mailer,
+  adapter: Bamboo.MailgunAdapter,
+  api_key: System.get_env("MAILGUN_API"),
+  domain: System.get_env("MAILGUN_DOMAIN")
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason

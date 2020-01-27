@@ -47,7 +47,7 @@ defmodule Widgets.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       ## Added Deps ##
-      {:mailgun, "~> 0.1.2"},
+      {:bamboo, "~> 1.4"},
       {:credo, "~> 1.1.0", only: [:dev, :test], runtime: false}
     ]
   end
